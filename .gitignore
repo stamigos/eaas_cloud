@@ -1,4 +1,4 @@
 db.sqlite3
 *.pyc
 migrations/
-eaas_cloud/__pycache__/
+__pycache__/
