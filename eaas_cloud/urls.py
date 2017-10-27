@@ -15,8 +15,13 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+from api import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^groups/$', views.GroupsListView.as_view(), name='groups_list'),
+    url(r'^groups/(?P<group_id>\d+)/$', views.GroupDetailView.as_view(), name='group_detail'),
+    url(r'^nodes/$', views.NodesListView.as_view(), name='nodes_list'),
+    url(r'^nodes/(?P<node_id>\d+)/$', views.NodeDetailView.as_view({'get': 'retrieve', 'put': 'put'}), name='node_detail'),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]
